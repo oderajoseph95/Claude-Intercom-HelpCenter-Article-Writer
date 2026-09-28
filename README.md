@@ -1,4 +1,4 @@
-# Intercom Help Center for Claude Code
+# Intercom Help Center Article Writer for Claude Code
 
 **Keep your Intercom help center true to your code.**
 
@@ -113,7 +113,7 @@ You get `.help-center/help-center-audit.md`. From there: `/intercom-help-center:
 /plugin install intercom-help-center@claude-intercom-help-center
 ```
 
-Pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/claude-intercom-help-center@v2.0.0`. From a shell: `claude plugin marketplace add ...` and `claude plugin install ...` work the same way.
+Pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/claude-intercom-help-center@v3.0.0`. From a shell: `claude plugin marketplace add ...` and `claude plugin install ...` work the same way.
 
 **Without the marketplace** (try it, or develop on it):
 

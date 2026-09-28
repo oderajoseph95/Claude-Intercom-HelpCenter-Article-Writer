@@ -52,7 +52,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: oderajoseph95/claude-intercom-help-center
-          ref: v2.0.0
+          ref: v3.0.0
           path: .help-center-tool
 
       - uses: actions/setup-node@v4

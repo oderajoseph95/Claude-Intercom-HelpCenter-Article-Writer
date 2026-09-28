@@ -25,7 +25,7 @@ In Claude Code, from any folder:
 
 What you see: `/plugin install` opens the plugin's details in the `/plugin` panel; choose install (user scope is fine). Check it loaded with `/plugin` (it lists 6 skills, 3 agents, 3 hooks) or `claude plugin details intercom-help-center` in a shell.
 
-To pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/claude-intercom-help-center@v2.0.0`.
+To pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/claude-intercom-help-center@v3.0.0`.
 
 ## 3. Create an Intercom access token
 
