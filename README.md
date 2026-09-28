@@ -15,13 +15,13 @@ No dependencies. Node 18+.
 For every project on your machine:
 
 ```bash
-git clone https://github.com/oderajoseph/intercom-article-writer ~/.claude/skills/intercom-article-writer
+git clone https://github.com/oderajoseph95/intercom-article-writer ~/.claude/skills/intercom-article-writer
 ```
 
 Or for one repo, so your team gets it too:
 
 ```bash
-git clone https://github.com/oderajoseph/intercom-article-writer .claude/skills/intercom-article-writer
+git clone https://github.com/oderajoseph95/intercom-article-writer .claude/skills/intercom-article-writer
 ```
 
 Then ask Claude Code something like:
