@@ -5,7 +5,7 @@ description: "<One line under the title. Finish: 'After reading this you will be
 
 # Where it lives on Intercom (matched BY NAME against your live Help Center)
 collection: "<Collection name exactly as it appears in Intercom>"
-section: ""            # optional: a section inside that collection. Blank publishes directly under it.
+section: ""            # optional: a section inside it. Deeper levels: "Admin › Advanced". Blank = directly in the collection.
 
 # Publishing state
 state: draft           # draft | published. Only a HUMAN changes this to published, after review.
@@ -15,10 +15,15 @@ sources:
   - <path/to/the/code/that/implements/this>
   - <path/to/the/ui/strings/file>
 
-# Written back by publish.mjs. Do not hand-edit.
+# Written back by publish.mjs. Do not hand-edit. (Also written: intercom_workspace, collection_id,
+# remote_hash, remote_updated_at: they detect edits made in Intercom and the wrong workspace.)
 intercom_id: null
 intercom_url: null
 last_synced: null
+
+# Translations only: a separate file per language, e.g. my-article.fr.md, with
+#   locale: fr
+#   translation_of: "path/to/the/source-article.md"
 ---
 
 # <The title again, word for word. Stripped on publish so Intercom does not show it twice.>

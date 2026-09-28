@@ -1,0 +1,63 @@
+# Weekly read-only help center audit. Copy to .github/workflows/help-center-audit.yml.
+#
+# Reads every collection and article from Intercom (it cannot write: the audit's API client refuses
+# anything but GET), compares them with the code, and attaches the report to the run.
+#
+# Secrets: INTERCOM_API_TOKEN (repository secret; read access to articles is enough).
+# Variables (optional): INTERCOM_REGION = us | eu | au.
+#
+# Privacy: the report lists article titles, including drafts. On a PUBLIC repository, workflow
+# artifacts can be downloaded by anyone who can see the repo. Keep retention short, or run this in
+# a private repository. The raw snapshot (article bodies) is never uploaded.
+
+name: Help center audit
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Mondays 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: oderajoseph95/claude-intercom-help-center
+          ref: v2.0.0
+          path: .help-center-tool
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Audit (read-only)
+        env:
+          INTERCOM_API_TOKEN: ${{ secrets.INTERCOM_API_TOKEN }}   # only this secret, only this step
+          INTERCOM_REGION: ${{ vars.INTERCOM_REGION || 'us' }}
+        run: node .help-center-tool/scripts/audit.mjs
+
+      - name: Correction plan (proposal only, never approved here)
+        run: node .help-center-tool/scripts/correction-plan.mjs
+
+      - name: Summary
+        run: |
+          {
+            sed -n '1,60p' .help-center/help-center-audit.md
+            echo
+            echo "Full report and plan: see the run's artifacts."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: help-center-audit
+          retention-days: 14
+          path: |
+            .help-center/help-center-audit.md
+            .help-center/help-center-audit.json
+            .help-center/help-center-plan.md

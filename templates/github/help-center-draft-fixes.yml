@@ -1,0 +1,122 @@
+# Optional: let Claude draft help center fixes and open a DRAFT pull request.
+# Copy to .github/workflows/help-center-draft-fixes.yml.
+#
+# What it does:
+#   1. runs the read-only audit (the Intercom token is given to that step only),
+#   2. runs Claude Code with this plugin to draft fixes for the correction plan, from your code,
+#      using the offline snapshot (Claude never receives the Intercom token),
+#   3. commits only help-center files to a new branch and opens a draft PR for a human to review.
+#
+# What it never does: publish to Intercom, approve a plan, merge, or push to an existing branch.
+# Publishing stays a human step (/intercom-help-center:publish on a developer machine).
+#
+# Secrets:
+#   INTERCOM_API_TOKEN   read access to articles (audit step only)
+#   ANTHROPIC_API_KEY    for anthropics/claude-code-action (or use claude_code_oauth_token instead)
+# The Claude GitHub App must be installed on the repo (https://github.com/apps/claude), or pass
+# your own github_token to the action. See https://code.claude.com/docs/en/github-actions
+#
+# The PR goes to pr.base from .help-center/config.json (set at setup), else the default branch.
+# Note: pull requests opened with the default GITHUB_TOKEN do not trigger other workflows. Re-run
+# the gate from the PR page, or open the PR with a GitHub App token if you need CI on it.
+
+name: Help center draft fixes
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "What to fix: 'all', plan item ids (P001,P004) or a feature id"
+        default: "all"
+  # schedule:
+  #   - cron: "0 8 1 * *"   # monthly, if you want it unattended
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: help-center-draft-fixes
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: oderajoseph95/claude-intercom-help-center
+          ref: v2.0.0
+          path: .help-center-tool
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: New branch from the PR base
+        id: branch
+        run: |
+          base=$(node -e 'try { process.stdout.write(require("./.help-center/config.json").pr.base || "") } catch {}')
+          base=${base:-${{ github.event.repository.default_branch }}}
+          dir=$(node -e 'try { process.stdout.write(require("./.help-center/config.json").articlesDir || "help-articles") } catch { process.stdout.write("help-articles") }')
+          b="help-center/$(date -u +%F)-draft-fixes-${{ github.run_number }}"
+          git fetch origin "$base"
+          git switch -c "$b" "origin/$base"
+          echo "name=$b" >> "$GITHUB_OUTPUT"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+
+      - name: Audit (read-only) and plan
+        env:
+          INTERCOM_API_TOKEN: ${{ secrets.INTERCOM_API_TOKEN }}   # this step only
+          INTERCOM_REGION: ${{ vars.INTERCOM_REGION || 'us' }}
+        run: |
+          node .help-center-tool/scripts/audit.mjs
+          node .help-center-tool/scripts/correction-plan.mjs
+
+      - name: Claude drafts the fixes (no Intercom token, no publishing)
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          plugin_marketplaces: "https://github.com/oderajoseph95/claude-intercom-help-center.git"
+          plugins: "intercom-help-center@claude-intercom-help-center"
+          prompt: |
+            Use the intercom-help-center plugin. This is a non-interactive CI run: follow the
+            skill's non-interactive defaults and ask nothing.
+            Draft fixes for these correction plan items: ${{ inputs.scope || 'all' }}
+            (read .help-center/help-center-plan.md; skip DELETE and MERGE items and list them instead).
+            For every article: run the pre-write check with --offline, write strictly from the code
+            and UI strings with the help-center-writer agent, then have the help-center-reviewer
+            agent review it and fix what it rejects. Leave new articles as state: draft.
+            Write files only. Do NOT run publish.mjs with --publish, do NOT run pr.mjs, do NOT run
+            git, do NOT approve any plan. Finish by writing .help-center/pr-body.md: what changed
+            with evidence (claim -> file:line), the plan items addressed, and what is unverified.
+          claude_args: |
+            --max-turns 80
+            --allowedTools "Read,Write,Edit,Glob,Grep,Task,Bash(node .help-center-tool/scripts/*)"
+
+      - name: Commit help-center files and open a draft PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for p in "${{ steps.branch.outputs.dir }}" .help-center/help-center-plan.md .help-center/help-center-plan.json .help-center/pr-body.md; do
+            if [ -e "$p" ]; then git add -- "$p"; fi
+          done
+          if git diff --cached --quiet; then echo "Nothing drafted."; exit 0; fi
+          if [ ! -f .help-center/pr-body.md ]; then
+            echo "Draft help center fixes. Review every claim before merging. Merging publishes nothing." > .help-center/pr-body.md
+          fi
+          git commit -m "Draft help center fixes"
+          git push -u origin "${{ steps.branch.outputs.name }}"
+          gh pr create --draft --base "${{ steps.branch.outputs.base }}" \
+            --head "${{ steps.branch.outputs.name }}" \
+            --title "Draft help center fixes ($(date -u +%F))" \
+            --body-file .help-center/pr-body.md
