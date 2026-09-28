@@ -1,0 +1,997 @@
+{
+  "generated_at": "2026-09-29T09:00:00.000Z",
+  "snapshot": {
+    "fetched_at": "2026-09-29T09:00:00.000Z",
+    "workspace": "ws1",
+    "workspace_name": "Example Co Help Center",
+    "region": "us"
+  },
+  "feature_source": "help-articles/coverage-manifest.mjs",
+  "strings_sources": [
+    "src/en.json"
+  ],
+  "totals": {
+    "articles": 11,
+    "published": 10,
+    "drafts": 1,
+    "collections": 4,
+    "sections": 2,
+    "features": 2,
+    "features_covered": 1,
+    "locales": [
+      "en",
+      "fr"
+    ],
+    "local_files": 2
+  },
+  "counts": {
+    "uncovered-feature": 1,
+    "empty": 1,
+    "broken-link": 1,
+    "deleted-on-intercom": 1,
+    "duplicate": 4,
+    "near-duplicate": 2,
+    "orphan": 3,
+    "same-title-other-collection": 2,
+    "links-to-draft": 1,
+    "no-collection": 1,
+    "stale": 1,
+    "empty-collection": 1,
+    "short": 1,
+    "non-question-title": 6,
+    "missing-translation": 9,
+    "draft": 1,
+    "not-in-repo": 11
+  },
+  "findings": [
+    {
+      "type": "uncovered-feature",
+      "severity": 9,
+      "impact": 9,
+      "feature_id": "order-tags",
+      "title": "Tag edited orders",
+      "state": "published",
+      "message": "shipped feature \"Tag edited orders\" has no article on Intercom",
+      "evidence": {
+        "sources": [],
+        "strings": [
+          "src/en.json: settings.tags.title = \"Order tags\"",
+          "src/en.json: settings.tags.autoTag.label = \"Tag edited orders\"",
+          "src/en.json: settings.tags.autoTag.help = \"Adds the tag you choose to any order a customer changed.\""
+        ]
+      }
+    },
+    {
+      "type": "empty",
+      "severity": 9,
+      "impact": 9,
+      "article_id": "3",
+      "title": "Welcome",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "has no text"
+    },
+    {
+      "type": "broken-link",
+      "severity": 8,
+      "impact": 8,
+      "article_id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection": "Old stuff › Legacy › Deep",
+      "message": "links to article 999, which does not exist",
+      "evidence": {
+        "href": "https://help.example.com/en/articles/999-gone"
+      }
+    },
+    {
+      "type": "deleted-on-intercom",
+      "severity": 7,
+      "impact": 7,
+      "article_id": "4040",
+      "title": "How do I archive an order?",
+      "state": "published",
+      "local_file": "help-articles/articles/gone.md",
+      "message": "help-articles/articles/gone.md has intercom_id 4040, which Intercom no longer has"
+    },
+    {
+      "type": "duplicate",
+      "severity": 7,
+      "impact": 7,
+      "article_id": "2",
+      "title": "How do I export my orders to CSV",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/2-export",
+      "collection": "Old stuff",
+      "message": "same title as 1 (in another collection)",
+      "evidence": {
+        "group": [
+          {
+            "id": "1",
+            "collection": "Orders",
+            "words": 320,
+            "state": "published"
+          },
+          {
+            "id": "2",
+            "collection": "Old stuff",
+            "words": 320,
+            "state": "published"
+          }
+        ]
+      }
+    },
+    {
+      "type": "duplicate",
+      "severity": 7,
+      "impact": 7,
+      "article_id": "1",
+      "title": "How do I export my orders to CSV?",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/1-export",
+      "collection": "Orders",
+      "message": "same title as 2 (in another collection)",
+      "evidence": {
+        "group": [
+          {
+            "id": "1",
+            "collection": "Orders",
+            "words": 320,
+            "state": "published"
+          },
+          {
+            "id": "2",
+            "collection": "Old stuff",
+            "words": 320,
+            "state": "published"
+          }
+        ]
+      }
+    },
+    {
+      "type": "duplicate",
+      "severity": 7,
+      "impact": 7,
+      "article_id": "3",
+      "title": "Welcome",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "same title as 9",
+      "evidence": {
+        "group": [
+          {
+            "id": "3",
+            "collection": "Getting started",
+            "words": 0,
+            "state": "published"
+          },
+          {
+            "id": "9",
+            "collection": "Getting started",
+            "words": 390,
+            "state": "published"
+          }
+        ]
+      }
+    },
+    {
+      "type": "duplicate",
+      "severity": 7,
+      "impact": 7,
+      "article_id": "9",
+      "title": "Welcome!",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "same title as 3",
+      "evidence": {
+        "group": [
+          {
+            "id": "3",
+            "collection": "Getting started",
+            "words": 0,
+            "state": "published"
+          },
+          {
+            "id": "9",
+            "collection": "Getting started",
+            "words": 390,
+            "state": "published"
+          }
+        ]
+      }
+    },
+    {
+      "type": "near-duplicate",
+      "severity": 6,
+      "impact": 6,
+      "article_id": "8",
+      "title": "Finding your way around",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "99% of its text overlaps article 7 (\"Getting around the dashboard\")",
+      "evidence": {
+        "other": "7",
+        "similarity": 0.99
+      }
+    },
+    {
+      "type": "near-duplicate",
+      "severity": 6,
+      "impact": 6,
+      "article_id": "7",
+      "title": "Getting around the dashboard",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "99% of its text overlaps article 8 (\"Finding your way around\")",
+      "evidence": {
+        "other": "8",
+        "similarity": 0.99
+      }
+    },
+    {
+      "type": "orphan",
+      "severity": 5,
+      "impact": 5,
+      "article_id": "11",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "matches no feature in the code: it may describe something removed or renamed"
+    },
+    {
+      "type": "same-title-other-collection",
+      "severity": 5,
+      "impact": 5,
+      "article_id": "10",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "same title as 11 (in another collection)",
+      "evidence": {
+        "group": [
+          {
+            "id": "10",
+            "collection": "Getting started",
+            "words": 360,
+            "state": "published"
+          },
+          {
+            "id": "11",
+            "collection": "Orders",
+            "words": 390,
+            "state": "published"
+          }
+        ]
+      }
+    },
+    {
+      "type": "same-title-other-collection",
+      "severity": 5,
+      "impact": 5,
+      "article_id": "11",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "same title as 10 (in another collection)",
+      "evidence": {
+        "group": [
+          {
+            "id": "10",
+            "collection": "Getting started",
+            "words": 360,
+            "state": "published"
+          },
+          {
+            "id": "11",
+            "collection": "Orders",
+            "words": 390,
+            "state": "published"
+          }
+        ]
+      }
+    },
+    {
+      "type": "orphan",
+      "severity": 5,
+      "impact": 5,
+      "article_id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection": "Old stuff › Legacy › Deep",
+      "message": "matches no feature in the code: it may describe something removed or renamed"
+    },
+    {
+      "type": "links-to-draft",
+      "severity": 5,
+      "impact": 5,
+      "article_id": "6",
+      "title": "Why is my export empty?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "links to article 5, which is a draft",
+      "evidence": {
+        "href": "https://help.example.com/en/articles/5-draft"
+      }
+    },
+    {
+      "type": "no-collection",
+      "severity": 6,
+      "impact": 3,
+      "article_id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection": null,
+      "message": "is in no collection, so readers cannot browse to it"
+    },
+    {
+      "type": "stale",
+      "severity": 3,
+      "impact": 3,
+      "article_id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection": "Old stuff › Legacy › Deep",
+      "message": "not updated in 3364 days"
+    },
+    {
+      "type": "empty-collection",
+      "severity": 3,
+      "impact": 3,
+      "collection_id": "15",
+      "title": "Nobody home",
+      "collection": "Nobody home",
+      "state": "published",
+      "message": "has no articles"
+    },
+    {
+      "type": "orphan",
+      "severity": 5,
+      "impact": 2.5,
+      "article_id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection": null,
+      "message": "matches no feature in the code: it may describe something removed or renamed"
+    },
+    {
+      "type": "short",
+      "severity": 4,
+      "impact": 2,
+      "article_id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection": null,
+      "message": "3 words (minimum 80)"
+    },
+    {
+      "type": "non-question-title",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "8",
+      "title": "Finding your way around",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "title is not a question a reader would search"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "8",
+      "title": "Finding your way around",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "no fr translation"
+    },
+    {
+      "type": "non-question-title",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "7",
+      "title": "Getting around the dashboard",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "title is not a question a reader would search"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "7",
+      "title": "Getting around the dashboard",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "no fr translation"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "10",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "no fr translation"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "11",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "no fr translation"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "2",
+      "title": "How do I export my orders to CSV",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/2-export",
+      "collection": "Old stuff",
+      "message": "no fr translation"
+    },
+    {
+      "type": "non-question-title",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection": "Old stuff › Legacy › Deep",
+      "message": "title is not a question a reader would search"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection": "Old stuff › Legacy › Deep",
+      "message": "no fr translation"
+    },
+    {
+      "type": "non-question-title",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "3",
+      "title": "Welcome",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "title is not a question a reader would search"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "3",
+      "title": "Welcome",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "no fr translation"
+    },
+    {
+      "type": "non-question-title",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "9",
+      "title": "Welcome!",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "title is not a question a reader would search"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "9",
+      "title": "Welcome!",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "no fr translation"
+    },
+    {
+      "type": "missing-translation",
+      "severity": 2,
+      "impact": 2,
+      "article_id": "6",
+      "title": "Why is my export empty?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "no fr translation"
+    },
+    {
+      "type": "draft",
+      "severity": 2,
+      "impact": 1,
+      "article_id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection": null,
+      "message": "is a draft, invisible to readers"
+    },
+    {
+      "type": "non-question-title",
+      "severity": 2,
+      "impact": 1,
+      "article_id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection": null,
+      "message": "title is not a question a reader would search"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "8",
+      "title": "Finding your way around",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "7",
+      "title": "Getting around the dashboard",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "10",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "11",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "2",
+      "title": "How do I export my orders to CSV",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/2-export",
+      "collection": "Old stuff",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "1",
+      "title": "How do I export my orders to CSV?",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/1-export",
+      "collection": "Orders",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection": "Old stuff › Legacy › Deep",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "3",
+      "title": "Welcome",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "9",
+      "title": "Welcome!",
+      "state": "published",
+      "url": null,
+      "collection": "Getting started",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 1,
+      "article_id": "6",
+      "title": "Why is my export empty?",
+      "state": "published",
+      "url": null,
+      "collection": "Orders",
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    },
+    {
+      "type": "not-in-repo",
+      "severity": 1,
+      "impact": 0.5,
+      "article_id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection": null,
+      "message": "has no source file in the repo (import it with pull.mjs to maintain it here)"
+    }
+  ],
+  "articles": [
+    {
+      "id": "1",
+      "title": "How do I export my orders to CSV?",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/1-export",
+      "collection_path": "Orders",
+      "parent_id": 11,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 320,
+      "has_embeds": false,
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": [
+        {
+          "id": "csv-export",
+          "score": 14,
+          "why": [
+            "mentions \"Export orders\"",
+            "title shares 3 keyword(s)",
+            "body shares 1 keyword(s)",
+            "quotes 4 UI string(s)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "How do I export my orders to CSV",
+      "state": "published",
+      "url": "https://help.example.com/en/articles/2-export",
+      "collection_path": "Old stuff",
+      "parent_id": 12,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 320,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": [
+        {
+          "id": "csv-export",
+          "score": 14,
+          "why": [
+            "mentions \"Export orders\"",
+            "title shares 3 keyword(s)",
+            "body shares 1 keyword(s)",
+            "quotes 4 UI string(s)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Welcome",
+      "state": "published",
+      "url": null,
+      "collection_path": "Getting started",
+      "parent_id": 10,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 0,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "4",
+      "title": "Legacy fax integration",
+      "state": "published",
+      "url": null,
+      "collection_path": "Old stuff › Legacy › Deep",
+      "parent_id": 14,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 332,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [
+        {
+          "href": "https://help.example.com/en/articles/999-gone",
+          "text": "old link",
+          "target_id": "999",
+          "ok": false
+        }
+      ],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "5",
+      "title": "Draft about billing",
+      "state": "draft",
+      "url": null,
+      "collection_path": null,
+      "parent_id": null,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 3,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "6",
+      "title": "Why is my export empty?",
+      "state": "published",
+      "url": null,
+      "collection_path": "Orders",
+      "parent_id": 11,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 346,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [
+        {
+          "href": "https://help.example.com/en/articles/5-draft",
+          "text": "billing",
+          "target_id": "5",
+          "ok": true
+        }
+      ],
+      "local_file": null,
+      "features": [
+        {
+          "id": "csv-export",
+          "score": 4,
+          "why": [
+            "title shares 1 keyword(s)",
+            "body shares 1 keyword(s)",
+            "quotes 1 UI string(s)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Getting around the dashboard",
+      "state": "published",
+      "url": null,
+      "collection_path": "Getting started",
+      "parent_id": 10,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 330,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "8",
+      "title": "Finding your way around",
+      "state": "published",
+      "url": null,
+      "collection_path": "Getting started",
+      "parent_id": 10,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 333,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "9",
+      "title": "Welcome!",
+      "state": "published",
+      "url": null,
+      "collection_path": "Getting started",
+      "parent_id": 10,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 390,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "10",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection_path": "Getting started",
+      "parent_id": 10,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 360,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    },
+    {
+      "id": "11",
+      "title": "How do I cancel?",
+      "state": "published",
+      "url": null,
+      "collection_path": "Orders",
+      "parent_id": 11,
+      "updated_at": "2026-09-29T09:00:00.000Z",
+      "words": 390,
+      "has_embeds": false,
+      "locales": [
+        "en"
+      ],
+      "links": [],
+      "local_file": null,
+      "features": []
+    }
+  ],
+  "features": [
+    {
+      "id": "csv-export",
+      "label": "Export orders",
+      "area": "Orders",
+      "shipped": true,
+      "sources": [
+        "src/export.js"
+      ],
+      "string_keys": [
+        "settings.export.title",
+        "settings.export.format.label",
+        "settings.export.format.help",
+        "settings.export.range.label",
+        "settings.export.range.help",
+        "settings.export.button"
+      ],
+      "covered_by": [
+        "1",
+        "2",
+        "6"
+      ]
+    },
+    {
+      "id": "order-tags",
+      "label": "Tag edited orders",
+      "area": "Orders",
+      "shipped": true,
+      "sources": [],
+      "string_keys": [
+        "settings.tags.title",
+        "settings.tags.autoTag.label",
+        "settings.tags.autoTag.help"
+      ],
+      "covered_by": []
+    }
+  ],
+  "collections": [
+    {
+      "id": "10",
+      "name": "Getting started",
+      "parent_id": null,
+      "path": "Getting started"
+    },
+    {
+      "id": "11",
+      "name": "Orders",
+      "parent_id": null,
+      "path": "Orders"
+    },
+    {
+      "id": "12",
+      "name": "Old stuff",
+      "parent_id": null,
+      "path": "Old stuff"
+    },
+    {
+      "id": "13",
+      "name": "Legacy",
+      "parent_id": "12",
+      "path": "Old stuff › Legacy"
+    },
+    {
+      "id": "14",
+      "name": "Deep",
+      "parent_id": "13",
+      "path": "Old stuff › Legacy › Deep"
+    },
+    {
+      "id": "15",
+      "name": "Nobody home",
+      "parent_id": null,
+      "path": "Nobody home"
+    }
+  ],
+  "near_duplicate_pairs": [
+    {
+      "a": "7",
+      "b": "8",
+      "similarity": 0.99
+    }
+  ]
+}
