@@ -4,6 +4,26 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-09-29
+
+The display name changes to "Intercom Help Center Article Writer for Claude Code". Nothing else about installing or running the plugin changes.
+
+### Changed
+- **Display name**: the README title and the plugin's `displayName` now read "Intercom Help Center Article Writer for Claude Code". The plugin name (`intercom-help-center`), the marketplace name and the repository are unchanged.
+- **GitHub Actions templates** pin `ref: v3.0.0`, and the README and setup guide show `@v3.0.0` as the release pin example.
+
+### Added
+- **Live example**: the README links to [help.tacey.app](https://help.tacey.app), the help center this workflow was built on.
+- **CODEOWNERS** for the repository.
+
+### Repository
+- `main` is branch-protected: changes land through a pull request with the four CI checks green.
+
+### Upgrading from 2.x
+- No breaking change. The install commands are the same:
+  `/plugin marketplace add oderajoseph95/claude-intercom-help-center` and `/plugin install intercom-help-center@claude-intercom-help-center`.
+- If you copied a workflow from `templates/github/`, you can change its `ref: v2.0.0` to `ref: v3.0.0`. The v2.0.0 tag stays available.
+
 ## [2.0.0] - 2026-09-29
 
 The skill becomes a Claude Code plugin that manages the whole Help Center, not only new articles.
@@ -43,6 +63,7 @@ The skill becomes a Claude Code plugin that manages the whole Help Center, not o
 ### Added
 - The `intercom-article-writer` skill: write help articles from code, a coverage manifest and CI gate (`coverage-check.mjs`), and a markdown-to-Intercom publisher (`publish.mjs`) with spacer paragraphs, H1 stripping, paginated collections, create-or-update by id with write-back, `--create-sections`, `--parity`, a dry-run default and a 20-article cap.
 
-[Unreleased]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/v2.0.0...dev
+[Unreleased]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/v3.0.0...dev
+[3.0.0]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/881238a...v2.0.0
 [1.0.0]: https://github.com/oderajoseph95/claude-intercom-help-center/tree/881238a
