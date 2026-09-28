@@ -81,7 +81,7 @@ export const tests = [
   }],
 
   ["docs: every message code is in docs/TROUBLESHOOTING.md, generated from the catalog and current", async () => {
-    const doc = readFileSync(join(REPO, "docs/TROUBLESHOOTING.md"), "utf8");
+    const doc = readFileSync(join(REPO, "docs/TROUBLESHOOTING.md"), "utf8").replace(/\r\n/g, "\n");
     for (const code of Object.keys(MESSAGES)) assert.ok(doc.includes(code), `${code} documented`);
     const block = /<!-- BEGIN GENERATED ERRORS -->[\s\S]*<!-- END GENERATED ERRORS -->/.exec(doc)?.[0];
     assert.equal(block, renderTroubleshooting(), "run `node scripts/gen-docs.mjs` to regenerate");
@@ -111,13 +111,13 @@ export const tests = [
     const changelog = readFileSync(join(REPO, "CHANGELOG.md"), "utf8");
     assert.ok(changelog.includes(`## [${plugin.version}]`), "CHANGELOG has the plugin version");
     for (const d of readdirSync(join(REPO, "skills"))) {
-      const s = readFileSync(join(REPO, "skills", d, "SKILL.md"), "utf8");
+      const s = readFileSync(join(REPO, "skills", d, "SKILL.md"), "utf8").replace(/\r\n/g, "\n");
       assert.match(s, /^---\n[\s\S]*?\ndescription: .+\n[\s\S]*?---\n/, `${d} has frontmatter with a description`);
       for (const ref of s.matchAll(/\]\((references\/[^)]+)\)/g)) assert.ok(existsSync(join(REPO, "skills", d, ref[1])), `${d} links ${ref[1]}`);
       for (const ref of s.matchAll(/\$\{CLAUDE_PLUGIN_ROOT\}\/([\w./-]+\.m?js)/g)) assert.ok(existsSync(join(REPO, ref[1])), `${d} runs ${ref[1]}, which exists`);
     }
     for (const f of readdirSync(join(REPO, "agents"))) {
-      const a = readFileSync(join(REPO, "agents", f), "utf8");
+      const a = readFileSync(join(REPO, "agents", f), "utf8").replace(/\r\n/g, "\n");
       assert.match(a, /^---\nname: [a-z-]+\ndescription: .+\ntools: .+\n/m, `${f} frontmatter`);
       assert.ok(!/^(hooks|mcpServers|permissionMode):/m.test(a), `${f} uses no field plugin agents ignore`);
     }
