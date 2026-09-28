@@ -5,7 +5,7 @@ import { createFakeIntercom } from "./fake-intercom.mjs";
 import { makeWork, cleanup, capture, approvedPlan, noSleep, write } from "./helpers.mjs";
 import { run as publish } from "../scripts/publish.mjs";
 
-const ARTICLE = "help-articles/articles/getting-started/how-do-i-export-my-orders-to-csv.md";
+const ARTICLE = "help-articles/articles/getting-started/export-csv.md";
 const cols = () => [
   { id: "1", name: "Billing", parent_id: null },
   { id: "2", name: "Getting Started", parent_id: null },
@@ -181,7 +181,7 @@ export const tests = [
 
   ["publish: a translation goes into the source article's translated_content", () => withFake({}, async ({ fake, work, pub }) => {
     approvedPlan(work);
-    write(join(work, "help-articles/articles/getting-started/how-do-i-export-my-orders-to-csv.fr.md"), `---\ntitle: "Comment exporter mes commandes ?"\nlocale: fr\ntranslation_of: "help-articles/articles/getting-started/how-do-i-export-my-orders-to-csv.md"\nstate: published\n---\n\nBonjour.\n`);
+    write(join(work, "help-articles/articles/getting-started/export-csv.fr.md"), `---\ntitle: "Comment exporter mes commandes ?"\nlocale: fr\ntranslation_of: "help-articles/articles/getting-started/export-csv.md"\nstate: published\n---\n\nBonjour.\n`);
     const r = await pub(["--publish"]);
     assert.equal(r.result, 0, r.out);
     const put = fake.writes().find((c) => c.method === "PUT" && c.body.translated_content);

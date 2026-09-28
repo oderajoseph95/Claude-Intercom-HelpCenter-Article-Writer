@@ -1,0 +1,19 @@
+title: "[Idea]: "
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share an idea or suggestion. Once it is clear what should happen, it can become a [feature request](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/issues/new/choose).
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What should the plugin do, and why would it help you?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: How you use the plugin today
+      description: Optional. Your setup and workflow, so the idea can be judged against real use.

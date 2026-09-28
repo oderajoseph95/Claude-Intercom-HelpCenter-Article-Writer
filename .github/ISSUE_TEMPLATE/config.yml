@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Question or help using the plugin
+    url: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/discussions/categories/q-a
+    about: Ask in Discussions (Q&A). Someone can mark the answer that solved it.
+  - name: Idea or early suggestion
+    url: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/discussions/categories/ideas
+    about: Talk an idea through in Discussions (Ideas) before it becomes a feature request.
   - name: Security issue
-    url: https://github.com/oderajoseph95/claude-intercom-help-center/security/advisories/new
+    url: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/security/advisories/new
     about: Report a vulnerability privately. Please do not open a public issue.

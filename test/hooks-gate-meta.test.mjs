@@ -60,7 +60,7 @@ export const tests = [
       assert.match(onPost(input), /IHC083 1 help article/);
       assert.equal(onPost(input), null, "once per article per session");
       assert.equal(onPost({ ...input, tool_input: { file_path: join(work, "src/other.js") } }), null);
-      assert.match(onStop({ cwd: work, session_id: "s1" }), /how-do-i-export-my-orders-to-csv\.md/);
+      assert.match(onStop({ cwd: work, session_id: "s1" }), /export-csv\.md/);
       assert.equal(onStop({ cwd: work, session_id: "s1" }), null, "cleared after Stop");
     } finally { cleanup(work); }
   }],

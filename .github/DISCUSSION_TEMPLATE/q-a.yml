@@ -1,0 +1,26 @@
+title: "[Q&A]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask anything about installing, configuring or running the plugin. If it is clearly a bug, [open a bug report](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/issues/new/choose) instead.
+
+        **Never paste your Intercom token, an API key or private article content.**
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you tried
+      description: Commands you ran and what they printed (the IHC code if there was one).
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Plugin and Claude Code versions
+      placeholder: "plugin 3.0.1, Claude Code 2.x, macOS"

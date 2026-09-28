@@ -1,0 +1,44 @@
+name: Feature request or suggestion
+description: Something the plugin should do, or do differently.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Not sure yet, or want to talk it through first? Start a thread in [Discussions > Ideas](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/discussions/categories/ideas) instead.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What were you trying to do, and where did the plugin get in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like to happen
+    validations:
+      required: true
+  - type: dropdown
+    id: intercom-writes
+    attributes:
+      label: Would it touch Intercom?
+      description: Anything that writes needs the same guards as publishing (dry run by default, an approved plan, the cap).
+      options:
+        - No, it only reads my repo
+        - It reads from Intercom
+        - It writes to Intercom
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Anything you tried instead
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contributing
+      options:
+        - label: I would like to open a pull request for this myself.

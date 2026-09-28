@@ -1,14 +1,14 @@
 {
   "name": "intercom-help-center",
   "displayName": "Intercom Help Center Article Writer for Claude Code",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Keep your Intercom help center true to your code: audit every article, map it to your features, plan fixes, write grounded articles, open PRs, and publish only what a human approved.",
   "author": {
     "name": "Odera Joseph",
     "url": "https://github.com/oderajoseph95"
   },
-  "homepage": "https://github.com/oderajoseph95/claude-intercom-help-center#readme",
-  "repository": "https://github.com/oderajoseph95/claude-intercom-help-center",
+  "homepage": "https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#readme",
+  "repository": "https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer",
   "license": "MIT",
   "keywords": ["intercom", "help-center", "documentation", "knowledge-base", "support", "seo", "github-actions", "technical-writing"]
 }
