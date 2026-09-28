@@ -11,10 +11,16 @@ A Claude Code plugin that reads your whole Intercom Help Center, compares it wit
 
 Help centers rot in two ways: features ship with no article, and articles keep describing code that changed. This plugin fixes both, and treats one rule as absolute: **a wrong article is worse than a missing one, because the reader acts on it.**
 
-- [How is this different from Intercom's official Claude plugin?](#how-is-this-different-from-intercoms-official-claude-plugin)
+- [Live example: help.tacey.app](#live-example-helptaceyapp) · [How is this different from Intercom's official Claude plugin?](#how-is-this-different-from-intercoms-official-claude-plugin)
 - [How it works](#how-it-works) · [Quick start](#quick-start-60-seconds) · [Install](#install) · [Commands](#commands) · [Agents](#agents) · [Hooks](#hooks)
 - [Configuration](#configuration) · [GitHub Actions](#github-actions) · [Safety model](#safety-model) · [Edge cases](#edge-cases)
 - [FAQ](#faq) · [Troubleshooting](#troubleshooting) · [Tested vs not tested](#tested-vs-not-tested) · [Uninstall](#uninstall)
+
+## Live example: help.tacey.app
+
+**[help.tacey.app](https://help.tacey.app)** is the help center for Tacey, a Shopify order-editing app, and it is where this workflow came from. In one pass it went from 7 articles in 6 collections to 109 articles in 22 collections, one collection per feature, every title a question a merchant would search for, and every article citing the code, changelog entry and screenshots it was written from.
+
+Those articles were published by Tacey's in-house publisher, the script this plugin was extracted from and generalized. The plugin itself has not yet been run against a live workspace (see [Tested vs not tested](#tested-vs-not-tested)).
 
 ## How is this different from Intercom's official Claude plugin?
 

@@ -9,8 +9,9 @@ import { run as coverage } from "../scripts/coverage-check.mjs";
 import { MESSAGES } from "../scripts/lib/messages.mjs";
 import { renderTroubleshooting } from "../scripts/gen-docs.mjs";
 
-// Names from the private project this tool was first built in. None may appear in the public repo.
-const PRIVATE = new RegExp(["ta" + "cey", "TC" + "Y-[0-9]", "arb" + "-dev", "VUL" + "CAN", "RO" + "NIN", "ARB" + "ITER", "KING" + " JOE", "ar" + "byn", "act" + "orly"].join("|"), "i");
+// Internal names from the project this tool was first built in. None may appear in the public repo.
+// The product name itself is public on purpose: help.tacey.app is the README's live example.
+const PRIVATE = new RegExp(["TC" + "Y-[0-9]", "arb" + "-dev", "VUL" + "CAN", "RO" + "NIN", "ARB" + "ITER", "KING" + " JOE", "ar" + "byn", "act" + "orly"].join("|"), "i");
 const bash = (cwd, command) => ({ cwd, tool_name: "Bash", tool_input: { command } });
 
 export const tests = [
