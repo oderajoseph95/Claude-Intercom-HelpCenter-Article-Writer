@@ -1,7 +1,7 @@
 {
   "name": "intercom-help-center",
   "displayName": "Intercom Help Center Article Writer for Claude Code",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Keep your Intercom help center true to your code: audit every article, map it to your features, plan fixes, write grounded articles, open PRs, and publish only what a human approved.",
   "author": {
     "name": "Odera Joseph",

@@ -113,7 +113,13 @@ You get `.help-center/help-center-audit.md`. From there: `/intercom-help-center:
 /plugin install intercom-help-center@claude-intercom-help-center
 ```
 
-Pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#v3.0.1`. From a shell: `claude plugin marketplace add ...` and `claude plugin install ...` work the same way.
+No GitHub SSH key? Use the HTTPS URL instead:
+
+```text
+/plugin marketplace add https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer.git
+```
+
+Pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#v3.0.2`. From a shell: `claude plugin marketplace add ...` and `claude plugin install ...` work the same way.
 
 **Windows:** if `marketplace add` fails with "SSH/HTTPS authentication failed" or "Filename too long", git hit Windows' 260-character path limit while cloning (the auth message is misleading). Run `git config --global core.longpaths true` once, then retry.
 

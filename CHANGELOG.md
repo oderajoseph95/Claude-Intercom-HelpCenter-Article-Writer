@@ -4,6 +4,19 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+## [3.0.2] - 2026-09-29
+
+Install docs only; the plugin itself is unchanged.
+
+### Added
+- **HTTPS install fallback**: the `owner/repo` shorthand clones over SSH, so it fails with "SSH authentication failed" / "Permission denied (publickey)" on a machine with no SSH key registered with GitHub. The README, the setup guide and the troubleshooting page now show the HTTPS form: `/plugin marketplace add https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer.git`.
+
+### Changed
+- **GitHub Actions templates** pin `ref: v3.0.2`, and the README and setup guide show `#v3.0.2` as the release pin example.
+
+### Upgrading from 3.0.1
+- Nothing to do. If you copied a workflow from `templates/github/`, you can change its `ref:` to `v3.0.2`.
+
 ## [3.0.1] - 2026-09-29
 
 The repository is renamed to `Claude-Intercom-HelpCenter-Article-Writer`. Links and docs only; the plugin itself is unchanged.
@@ -85,7 +98,8 @@ The skill becomes a Claude Code plugin that manages the whole Help Center, not o
 ### Added
 - The `intercom-article-writer` skill: write help articles from code, a coverage manifest and CI gate (`coverage-check.mjs`), and a markdown-to-Intercom publisher (`publish.mjs`) with spacer paragraphs, H1 stripping, paginated collections, create-or-update by id with write-back, `--create-sections`, `--parity`, a dry-run default and a 20-article cap.
 
-[Unreleased]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v3.0.1...dev
+[Unreleased]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v3.0.2...dev
+[3.0.2]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/881238a...v2.0.0

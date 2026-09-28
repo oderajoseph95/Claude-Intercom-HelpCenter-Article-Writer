@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer
-          ref: v3.0.1
+          ref: v3.0.2
           path: .help-center-tool
 
       - uses: actions/setup-node@v4

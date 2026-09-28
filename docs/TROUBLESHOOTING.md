@@ -18,6 +18,7 @@ Set `HELP_CENTER_DEBUG=1` to also print the stack trace of an unexpected error.
 | The audit says every feature is uncovered | The features have no `label`, `keywords` or `strings` that appear in your articles | Add them to the manifest (see docs/CONFIG.md) |
 | Orphans that are clearly about a real feature | Same cause: the feature's words do not appear in the article | Add `keywords`/`strings` to that feature, or map the file with an `article:` cell |
 | Windows: `/plugin marketplace add` fails with "SSH/HTTPS authentication failed" or "Filename too long" | git hit Windows' 260-character path limit while cloning into Claude Code's plugin folder; the authentication message is misleading | `git config --global core.longpaths true`, then retry the install |
+| `/plugin marketplace add` fails with "SSH authentication failed" or "Permission denied (publickey)" | The `owner/repo` shorthand clones over SSH, and this machine has no SSH key registered with GitHub | Use the HTTPS URL: `/plugin marketplace add https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer.git`. Or register an SSH key with GitHub (for example with `gh auth login` and SSH as the protocol) |
 | `gh` works in your terminal but not for Claude | Claude Code started from a different shell or environment | Start `claude` from the terminal where `gh auth status` works |
 | Setup finds no strings | Your strings live in an unusual place or format | Pass `--strings path1,path2`; supported: JSON, YAML, .po, .strings, Android XML |
 
