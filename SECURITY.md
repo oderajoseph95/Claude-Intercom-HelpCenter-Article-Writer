@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please report it privately: [open a security advisory](https://github.com/oderajoseph95/claude-intercom-help-center/security/advisories/new). Do not open a public issue. You will get an answer within a few days.
+Please report it privately: [open a security advisory](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/security/advisories/new). Do not open a public issue. You will get an answer within a few days.
 
 Useful things to include: what an attacker could do, the steps to reproduce, and the version.
 

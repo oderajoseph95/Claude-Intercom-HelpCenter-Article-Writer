@@ -2,7 +2,7 @@
 
 **Keep your Intercom help center true to your code.**
 
-[![CI](https://github.com/oderajoseph95/claude-intercom-help-center/actions/workflows/ci.yml/badge.svg)](https://github.com/oderajoseph95/claude-intercom-help-center/actions/workflows/ci.yml)
+[![CI](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/actions/workflows/ci.yml/badge.svg)](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Node 18+](https://img.shields.io/badge/node-18%2B-brightgreen)
 ![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
@@ -85,7 +85,7 @@ A real report, generated from the test fixtures: [examples/sample-output/help-ce
 ## Quick start (60 seconds)
 
 ```text
-/plugin marketplace add oderajoseph95/claude-intercom-help-center
+/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer
 /plugin install intercom-help-center@claude-intercom-help-center
 ```
 
@@ -109,23 +109,25 @@ You get `.help-center/help-center-audit.md`. From there: `/intercom-help-center:
 **From the plugin marketplace** (recommended):
 
 ```text
-/plugin marketplace add oderajoseph95/claude-intercom-help-center
+/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer
 /plugin install intercom-help-center@claude-intercom-help-center
 ```
 
-Pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/claude-intercom-help-center@v3.0.0`. From a shell: `claude plugin marketplace add ...` and `claude plugin install ...` work the same way.
+Pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#v3.0.1`. From a shell: `claude plugin marketplace add ...` and `claude plugin install ...` work the same way.
+
+**Windows:** if `marketplace add` fails with "SSH/HTTPS authentication failed" or "Filename too long", git hit Windows' 260-character path limit while cloning (the auth message is misleading). Run `git config --global core.longpaths true` once, then retry.
 
 **Without the marketplace** (try it, or develop on it):
 
 ```bash
-git clone https://github.com/oderajoseph95/claude-intercom-help-center
-claude --plugin-dir ./claude-intercom-help-center
+git clone https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer
+claude --plugin-dir ./Claude-Intercom-HelpCenter-Article-Writer
 ```
 
 **As a plain skill** (no commands, agents or hooks; the core skill and its scripts only):
 
 ```bash
-git clone https://github.com/oderajoseph95/claude-intercom-help-center /tmp/ihc
+git clone https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer /tmp/ihc
 mkdir -p .claude/skills/intercom-help-center
 cp -r /tmp/ihc/skills/intercom-help-center/. /tmp/ihc/scripts /tmp/ihc/templates .claude/skills/intercom-help-center/
 ```
@@ -295,6 +297,13 @@ Every error prints a code, its cause and its fix. The full list, generated from 
 ```
 
 Then delete `.help-center/` and your copies of the workflow templates if you do not want them. Your articles stay in your repo and on Intercom.
+
+## Contributing and support
+
+- **Questions and help:** [Discussions > Q&A](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/discussions/categories/q-a)
+- **Ideas:** [Discussions > Ideas](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/discussions/categories/ideas)
+- **Bugs, feature requests, docs fixes:** [open an issue](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/issues/new/choose) (each has a short form)
+- **Pull requests:** branch from `dev` and target `dev`; CI must pass and the maintainer reviews every change. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Contributing, security, license
 

@@ -27,8 +27,8 @@ jobs:
       # The plugin's scripts, pinned to a release. Zero npm dependencies.
       - uses: actions/checkout@v4
         with:
-          repository: oderajoseph95/claude-intercom-help-center
-          ref: v3.0.0
+          repository: oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer
+          ref: v3.0.1
           path: .help-center-tool
 
       - uses: actions/setup-node@v4

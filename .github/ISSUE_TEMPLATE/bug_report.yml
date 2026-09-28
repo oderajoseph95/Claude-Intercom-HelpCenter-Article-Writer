@@ -1,0 +1,80 @@
+name: Bug report
+description: Something the plugin did wrong, or an error you could not fix from its message.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Before you start: check [docs/TROUBLESHOOTING.md](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/blob/main/docs/TROUBLESHOOTING.md), since every error code (IHCxxx) has a cause and a fix there.
+
+        **Never paste your Intercom token, an API key, a real workspace id or private article content.** For a security problem, use the private security advisory link instead of this form.
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      description: From `/plugin` in Claude Code, or `version` in `.claude-plugin/plugin.json`.
+      placeholder: "3.0.1"
+    validations:
+      required: true
+  - type: input
+    id: claude-version
+    attributes:
+      label: Claude Code version
+      description: Output of `claude --version`.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - Windows (WSL)
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node version
+      description: Output of `node --version`.
+  - type: textarea
+    id: command
+    attributes:
+      label: Command you ran
+      description: The slash command or script, with its arguments (for example `/intercom-help-center:audit` or `node scripts/publish.mjs --dry-run`).
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: Include the full output and the IHC code if there was one. Remove anything private.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Doctor output
+      description: Run `/intercom-help-center:setup`, or `node scripts/doctor.mjs` from the plugin folder, and paste the result. Doctor never prints the token, but check and redact anything private (workspace ids, article titles) before posting.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I removed tokens, API keys and private content from everything above.
+          required: true
+        - label: I searched existing issues and this is not a duplicate.
+          required: true

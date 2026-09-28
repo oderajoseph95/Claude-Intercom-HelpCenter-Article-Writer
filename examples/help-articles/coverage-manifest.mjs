@@ -29,7 +29,7 @@ export function shipped({ root }) {
   return JSON.parse(readFileSync(join(root, "src/features.json"), "utf8")).shipped;
 }
 
-const EXPORT_ARTICLE = "help-articles/articles/getting-started/how-do-i-export-my-orders-to-csv.md";
+const EXPORT_ARTICLE = "help-articles/articles/getting-started/export-csv.md";
 
 export const FEATURES = {
   "csv-export": {

@@ -51,8 +51,8 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          repository: oderajoseph95/claude-intercom-help-center
-          ref: v3.0.0
+          repository: oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer
+          ref: v3.0.1
           path: .help-center-tool
 
       - uses: actions/setup-node@v4
@@ -84,7 +84,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          plugin_marketplaces: "https://github.com/oderajoseph95/claude-intercom-help-center.git"
+          plugin_marketplaces: "https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer.git"
           plugins: "intercom-help-center@claude-intercom-help-center"
           prompt: |
             Use the intercom-help-center plugin. This is a non-interactive CI run: follow the

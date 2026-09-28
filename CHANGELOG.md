@@ -4,6 +4,28 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+## [3.0.1] - 2026-09-29
+
+The repository is renamed to `Claude-Intercom-HelpCenter-Article-Writer`. Links and docs only; the plugin itself is unchanged.
+
+### Changed
+- **Repository**: now [oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer](https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer) (was `oderajoseph95/claude-intercom-help-center`; GitHub redirects the old URL). Every link, badge, install command and manifest URL points at the new name.
+- **Install**: `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer`, then `/plugin install intercom-help-center@claude-intercom-help-center`. The plugin name and the marketplace name are unchanged.
+- **GitHub Actions templates** check out `oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer` at `ref: v3.0.1`.
+
+### Fixed
+- **Windows install**: `/plugin marketplace add` could fail with a misleading "SSH/HTTPS authentication failed" because git hit Windows' path-length limit on a deep example file. The example article is now `examples/help-articles/articles/getting-started/export-csv.md`, and the README, setup guide and troubleshooting page say to run `git config --global core.longpaths true` if it still happens.
+- **Release pin**: the pin goes on the marketplace, `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#v3.0.1`. The `@v3.0.0` form shown in 3.0.0 does not work.
+
+### Added
+- **Issue forms** for bug reports, feature requests and docs improvements. Blank issues stay off.
+- **Discussions** are open, with forms for Q&A and Ideas.
+- **CONTRIBUTING.md** explains how to get help, report a bug, suggest a feature, start a discussion and send a pull request. The README links to it.
+
+### Upgrading from 3.0.0
+- Nothing to do if you installed from the marketplace: the old URL redirects. To point at the new name, run `/plugin marketplace remove claude-intercom-help-center`, then the two install commands above.
+- If you copied a workflow from `templates/github/`, change `repository:` to `oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer` and `ref:` to `v3.0.1`.
+
 ## [3.0.0] - 2026-09-29
 
 The display name changes to "Intercom Help Center Article Writer for Claude Code". Nothing else about installing or running the plugin changes.
@@ -21,7 +43,7 @@ The display name changes to "Intercom Help Center Article Writer for Claude Code
 
 ### Upgrading from 2.x
 - No breaking change. The install commands are the same:
-  `/plugin marketplace add oderajoseph95/claude-intercom-help-center` and `/plugin install intercom-help-center@claude-intercom-help-center`.
+  `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer` and `/plugin install intercom-help-center@claude-intercom-help-center`.
 - If you copied a workflow from `templates/github/`, you can change its `ref: v2.0.0` to `ref: v3.0.0`. The v2.0.0 tag stays available.
 
 ## [2.0.0] - 2026-09-29
@@ -29,7 +51,7 @@ The display name changes to "Intercom Help Center Article Writer for Claude Code
 The skill becomes a Claude Code plugin that manages the whole Help Center, not only new articles.
 
 ### Added
-- **Plugin packaging**: `.claude-plugin/plugin.json` and a marketplace in the same repo. Install with `/plugin marketplace add oderajoseph95/claude-intercom-help-center` and `/plugin install intercom-help-center@claude-intercom-help-center`.
+- **Plugin packaging**: `.claude-plugin/plugin.json` and a marketplace in the same repo. Install with `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer` and `/plugin install intercom-help-center@claude-intercom-help-center`.
 - **Commands**: `/intercom-help-center:setup`, `:audit`, `:plan`, `:fix`, `:publish`.
 - **Agents**: `help-center-auditor` (verifies findings against the code), `help-center-writer` (writes strictly from code and strings), `help-center-reviewer` (adversarial, read-only).
 - **Hooks**: a publish guard (approved plan and cap), a secret guard (no Intercom token in files), and a stale-article reminder when cited code changes.
@@ -63,7 +85,8 @@ The skill becomes a Claude Code plugin that manages the whole Help Center, not o
 ### Added
 - The `intercom-article-writer` skill: write help articles from code, a coverage manifest and CI gate (`coverage-check.mjs`), and a markdown-to-Intercom publisher (`publish.mjs`) with spacer paragraphs, H1 stripping, paginated collections, create-or-update by id with write-back, `--create-sections`, `--parity`, a dry-run default and a 20-article cap.
 
-[Unreleased]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/v3.0.0...dev
-[3.0.0]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/v2.0.0...v3.0.0
-[2.0.0]: https://github.com/oderajoseph95/claude-intercom-help-center/compare/881238a...v2.0.0
-[1.0.0]: https://github.com/oderajoseph95/claude-intercom-help-center/tree/881238a
+[Unreleased]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v3.0.1...dev
+[3.0.1]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v3.0.0...v3.0.1
+[3.0.0]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/v2.0.0...v3.0.0
+[2.0.0]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/compare/881238a...v2.0.0
+[1.0.0]: https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer/tree/881238a
