@@ -23,9 +23,15 @@ In Claude Code, from any folder:
 /plugin install intercom-help-center@claude-intercom-help-center
 ```
 
+No GitHub SSH key? Use the HTTPS URL instead:
+
+```text
+/plugin marketplace add https://github.com/oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer.git
+```
+
 What you see: `/plugin install` opens the plugin's details in the `/plugin` panel; choose install (user scope is fine). Check it loaded with `/plugin` (it lists 6 skills, 3 agents, 3 hooks) or `claude plugin details intercom-help-center` in a shell.
 
-To pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#v3.0.1`.
+To pin a release instead of following `main`: `/plugin marketplace add oderajoseph95/Claude-Intercom-HelpCenter-Article-Writer#v3.0.2`.
 
 **If the install fails on Windows** with "SSH/HTTPS authentication failed" or "Filename too long": the real cause is git refusing a checkout path longer than Windows' 260-character limit, not your credentials. Run this once, then run the two commands again:
 
