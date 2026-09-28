@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "export": {
+      "title": "Export orders",
+      "format": { "label": "File format", "help": "CSV opens in Excel, Numbers and Google Sheets." },
+      "range": { "label": "Date range", "help": "Only orders placed inside this range are exported." },
+      "button": "Download CSV"
+    },
+    "tags": {
+      "title": "Order tags",
+      "autoTag": { "label": "Tag edited orders", "help": "Adds the tag you choose to any order a customer changed." }
+    }
+  }
+}
