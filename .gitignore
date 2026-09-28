@@ -1,0 +1,5 @@
+node_modules/
+.help-center/snapshot.json
+.help-center/session-*.json
+*.log
+.DS_Store

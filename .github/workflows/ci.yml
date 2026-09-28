@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ["18", "22"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node scripts/selftest.mjs
+      - name: Example coverage gate
+        working-directory: examples
+        run: node ../scripts/coverage-check.mjs
+      - name: Docs are current
+        shell: bash
+        run: |
+          node scripts/gen-docs.mjs
+          git diff --exit-code -- docs/TROUBLESHOOTING.md

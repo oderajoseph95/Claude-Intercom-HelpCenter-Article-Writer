@@ -1,0 +1,39 @@
+# Help center coverage gate. Copy to .github/workflows/help-center-gate.yml.
+#
+# Fails a pull request when a shipped feature has no help article (or no ticketed reason), when an
+# article file goes missing, or when an article cites code that no longer exists. Warns when the
+# code an article describes changed after the article was last published.
+#
+# Needs NO secrets and never talks to Intercom: it reads only your repo.
+
+name: Help center gate
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]   # adjust to your long-lived branches
+
+permissions:
+  contents: read
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # the stale-article check reads git history
+
+      # The plugin's scripts, pinned to a release. Zero npm dependencies.
+      - uses: actions/checkout@v4
+        with:
+          repository: oderajoseph95/claude-intercom-help-center
+          ref: v2.0.0
+          path: .help-center-tool
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Add --strict to also fail on stale articles.
+      - run: node .help-center-tool/scripts/coverage-check.mjs

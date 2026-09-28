@@ -1,0 +1,17 @@
+{
+  "name": "claude-intercom-help-center",
+  "description": "Keep your Intercom help center true to your code.",
+  "owner": {
+    "name": "Odera Joseph",
+    "url": "https://github.com/oderajoseph95"
+  },
+  "plugins": [
+    {
+      "name": "intercom-help-center",
+      "source": "./",
+      "description": "Audit, categorize, plan, fix, review and publish Intercom help articles, grounded in your code, with a CI coverage gate.",
+      "category": "documentation",
+      "tags": ["intercom", "help-center", "documentation"]
+    }
+  ]
+}
